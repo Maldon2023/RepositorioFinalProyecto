@@ -5,10 +5,25 @@
  */
 package AccesoADatos;
 
-/**
- *
- * @author Alumno
- */
-public class InscripcionData {
-    
+import AccesoADatos.AlumnoData;
+
+public class InscripcionData extends Conexion {
+
+    private Connection Conexion;
+
+    private MateriaData matData;
+
+    private AlumnoData aluData;
+
+    public InscripcionData() {
+    }
+
+    public void GuardarInscripcion(Inscripcion Insc) {
+    }
+
+    public void BorrarInscripcionMateriaAlumno(int idAlumno, int idMateria) {
+    }
+
+    public void ActualizarNota(int idAlumno, int idMateria, double nota) {
+    }
 }
