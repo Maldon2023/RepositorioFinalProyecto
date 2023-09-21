@@ -6,6 +6,8 @@
 package AccesoADatos;
 
 import AccesoADatos.AlumnoData;
+import Entidades.Inscripcion;
+import java.sql.Connection;
 
 public class InscripcionData extends Conexion {
 
