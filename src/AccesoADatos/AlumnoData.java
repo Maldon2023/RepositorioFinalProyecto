@@ -48,16 +48,15 @@ public class AlumnoData {
 
     }
     
-    // OPERACIONES CRUD:
-    //C - CREATE Crear/Insertar
+
     public void guardarAlumno(Alumno a){
     
          String sql= (" INSERT INTO alumno (dni, apellido, nombre, fechaNacimiento,estado"
-                      + "VALUES (?,?,?,?,?)");  //Uso caracter comodin.
+                      + "VALUES (?,?,?,?,?)");  
          
-         try{   //solicito en el PS id y sql(sentencia insert)
+         try{  
              PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-             //Asigno o setteo valor del caracter comodin
+             
              ps.setInt(1, a.getDni());
              ps.setString(2, a.getApellido());
              ps.setString(3, a.getNombre());
@@ -65,7 +64,7 @@ public class AlumnoData {
              ps.setBoolean(5, a.isEstado());
              
              ps.executeUpdate();
-             ResultSet rs= ps.getGeneratedKeys(); //El resultado seria una lista de 1 columna con tantos id como registros.
+             ResultSet rs= ps.getGeneratedKeys(); 
              
              if(rs.next()){
                  a.setIdAlumno(rs.getInt(1)); 
@@ -82,7 +81,7 @@ public class AlumnoData {
     }   
     
     
-    // U - UPDATE Actualizar/Modificar                                                         
+                                                      
     public void modificarAlumno(Alumno a){
     
         String sql= ("UPDATE alumno SET dni=?, apellido=?, nombre=?, fechaNacimiento=?, estado=? WHERE idAlumno=?");
@@ -97,7 +96,7 @@ public class AlumnoData {
             ps.setBoolean(5, a.isEstado());
             ps.setInt(5,a.getIdAlumno());
             
-            int filaMod= ps.executeUpdate(); //El metodo EXECUTE.UPDATE devuelve un entero(n° filas afectadas x modificacion)
+            int filaMod= ps.executeUpdate(); 
             
             if (filaMod<=1) {
                 JOptionPane.showMessageDialog(null, " Modificacion efectuada.");
@@ -111,19 +110,19 @@ public class AlumnoData {
     }
     
     
-    // D - DELETE Borrar/Eliminar/Remover
-    public void eliminarAlumno(int id){
+   
+    public void eliminarAlumno(int dni){
         
-        String sql= "UPDATE alumno SET estado=0 WHERE idAlumno=?"; //Borrado logico.
+        String sql= "UPDATE alumno SET estado=0 WHERE dni=?"; 
         
         try {
             PreparedStatement ps = conex.prepareStatement(sql);
                        
-            ps.setInt(1, id);
+            ps.setInt(1, dni);
             
             int filaEliminada=ps.executeUpdate();
             
-            if (filaEliminada==1) { // Sólo se borrara un registro(id).
+            if (filaEliminada==1) { 
                 JOptionPane.showMessageDialog(null, " Eliminacion efectuada.");
             }
             
@@ -136,7 +135,7 @@ public class AlumnoData {
     }
     
     
-    // R - READ Leer/Seleccionar/Buscar
+  
     public Alumno buscarAlumnoPorId(int id){
         Alumno a=null;
         

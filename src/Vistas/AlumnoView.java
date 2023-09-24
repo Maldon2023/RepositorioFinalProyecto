@@ -17,6 +17,7 @@ public class AlumnoView extends javax.swing.JInternalFrame {
         datos();
         celdaNOEdit();
         Alumno add=new Alumno();  
+    
        
         
     }
@@ -102,48 +103,49 @@ public class AlumnoView extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(183, 183, 183)
                         .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel3))
-                                    .addComponent(jLabel5))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jtf_nombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jrb_estado)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jtf_dni)
-                                        .addGap(77, 77, 77)
-                                        .addComponent(jb_buscar))
-                                    .addComponent(jtf_apellido)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(jLabel6)
-                                .addGap(45, 45, 45)
-                                .addComponent(jdc_fechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jb_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jb_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jb_guardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jb_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGap(39, 39, 39)
+                            .addComponent(jb_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jb_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jb_guardar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                            .addComponent(jb_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGap(37, 37, 37)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel4)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel3))
+                                        .addComponent(jLabel5))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jtf_nombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jrb_estado)
+                                            .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jtf_dni)
+                                            .addGap(77, 77, 77)
+                                            .addComponent(jb_buscar))
+                                        .addComponent(jtf_apellido)))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(4, 4, 4)
+                                    .addComponent(jLabel6)
+                                    .addGap(45, 45, 45)
+                                    .addComponent(jdc_fechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))))))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
+                .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -167,7 +169,7 @@ public class AlumnoView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
                     .addComponent(jdc_fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_eliminar)
                     .addComponent(jb_nuevo)
@@ -203,7 +205,7 @@ public class AlumnoView extends javax.swing.JInternalFrame {
 //            for (AlumnoData aD : InscripcioData){
 //            if( aD.buscarAlumnoPorDni(dni)==null){
 //                jtf_dni.setText("");
-//                JOptionPane.showMessageDialog(this, " DNI no encontrado en la base de datos");
+//                JOptionPane.showMessageDialog(this, " DNI no encontrado en la Base de Datos");
 //                    
 //            }else
 //                 datosView();
@@ -245,12 +247,27 @@ public class AlumnoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jb_nuevoActionPerformed
 
     private void jb_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_eliminarActionPerformed
-        
-       
-         
-            
-        
-       
+//        
+//       datosView();
+//         try{      
+//        int dni=Integer.parseInt(jtf_dni.getText());
+//       
+//        for (AlumnoData aD: InscripcionData){
+//            
+//            if (aD.buscarAlumnoPorDni(dni)!= null){
+//                
+//                aD.eliminarAlumno(dni);
+//                
+//                JOptionPane.showMessageDialog(null, " El alumno: " + jtf_apellido.getText() + jtf_nombre.getText() + " ha sido eliminado. ");
+//            }
+//            else
+//                JOptionPane.showMessageDialog(null, "No se pudo eliminar el registro.");
+//        }
+//        
+//         }catch (NumberFormatException e ){
+//             JOptionPane.showMessageDialog(null, " El registro que desea eliminar no existe. O exixte un error en el DNI.");
+//         }
+//        
     }//GEN-LAST:event_jb_eliminarActionPerformed
 
 
