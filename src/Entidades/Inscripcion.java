@@ -1,5 +1,10 @@
 package Entidades;
 
+import java.awt.List;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 
 public class Inscripcion {
    private int idInscripcion;
@@ -23,6 +28,10 @@ public class Inscripcion {
         this.materia = materia;
     }
 
+    public Inscripcion(int nota) {
+        this.nota = nota;
+    }
+    
     public int getIdInscripcion() {
         return idInscripcion;
     }
@@ -61,7 +70,7 @@ public class Inscripcion {
         return Inscripcion;//To change body of generated methods, choose Tools | Templates.
     }
    
-   
+    
    
    
    

@@ -27,7 +27,7 @@ public class Conexion {
            try{
                Class.forName("org.mariadb.jdbc.Driver");
                connection = DriverManager.getConnection (URL + DB+"?useLegacyDatetimeCode = false&severTimezone = UTC " + "&user= "  + USUARIO + " &password = " + PASSWORD );
-       
+               JOptionPane.showMessageDialog(null,"Conexion a base de datos exitosa");
            } catch ( SQLException    uni  ){
                JOptionPane.showMessageDialog( null , " Error al conectarse con la base de datos"+ uni.getMessage());
                
