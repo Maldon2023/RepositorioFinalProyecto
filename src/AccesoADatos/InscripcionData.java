@@ -1,6 +1,6 @@
 package AccesoADatos;
 
-<<<<<<< HEAD
+
 import AccesoADatos.AlumnoData;
 import AccesoADatos.MateriaData;
 import Entidades.Alumno;
@@ -14,57 +14,35 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 
-=======
-import AccesoADatos.*;
-import Entidades.*;
-import java.awt.List;
-import java.sql.*;
-import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import org.mariadb.jdbc.Statement;
->>>>>>> a95260aec582ec5982627c1510187313505889d9
+
 
 public class InscripcionData {
 
-<<<<<<< HEAD
-    private Connection conex;
-=======
+
     private Connection Conex = null;
 
->>>>>>> a95260aec582ec5982627c1510187313505889d9
+
     private MateriaData matData;
     private AlumnoData aluData;
     
     
     public InscripcionData() {
-<<<<<<< HEAD
-        
-        conex=Conexion.Revisarconexion();
-=======
+
         this.Conex = Conexion.Revisarconexion();
->>>>>>> a95260aec582ec5982627c1510187313505889d9
+
     }
     
 
     public void GuardarInscripcion(Inscripcion Insc) {
         String sql = "INSERT INTO universidadulp_inscripcion(nota,idAlumno,idMateria)" + "VALUES(?,?,?)";
         try {
-<<<<<<< HEAD
-            PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, Insc.getNota());
-            ps.setInt(2, Insc.getAlumno().getIdAlumno());
-            ps.setInt(3, Insc.getMateria().getIdMateria());
-            ps.executeUpdate();
-            
-=======
+
             PreparedStatement ps = Conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, Insc.getNota());
-            ps.setInt(2, Insc.getAlumno().getidAlumno();
+            ps.setInt(2, Insc.getAlumno().getidAlumno());
             ps.setInt(3, Insc.getMateria().getidMateria());
             ps.executeUpdate();
->>>>>>> a95260aec582ec5982627c1510187313505889d9
+
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 Insc.setIdInscripcion(rs.getInt(1));
@@ -79,11 +57,11 @@ public class InscripcionData {
     
 
     public void BorrarInscripcionMateriaAlumno(int idAlumno, int idMateria) {
-<<<<<<< HEAD
+
         String sql = "DELETE FROM universidadulp_inscripcion WHERE idAlumno = ? AND idMateria = ?";
         
         try {
-            PreparedStatement ps = conex.prepareStatement(sql);
+            PreparedStatement ps = Conex.prepareStatement(sql);
             ps.setInt(1,idAlumno);
             ps.setInt(2,idMateria);
             int filas = ps.executeUpdate();
@@ -93,13 +71,7 @@ public class InscripcionData {
             } 
             
             ps.close();
-=======
-        
-        
-        try {
-            PreparedStatement ps = Conex.prepareStatement(sql);
-            ps.setBoolean()........
->>>>>>> a95260aec582ec5982627c1510187313505889d9
+
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos universidadulp_inscripcion");
@@ -113,7 +85,7 @@ public class InscripcionData {
        
         try {
             
-            PreparedStatement ps = conex.prepareStatement(sql);
+            PreparedStatement ps = Conex.prepareStatement(sql);
             ps.setDouble(1,nota);
             ps.setInt(2, idAlumno);
             ps.setInt(3, idMateria);
@@ -139,7 +111,7 @@ public class InscripcionData {
         try {
             
             String sql = "SELECT * FROM universidadulp_inscripcion";
-            PreparedStatement ps = conex.prepareStatement(sql);
+            PreparedStatement ps = Conex.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
@@ -169,7 +141,7 @@ public class InscripcionData {
         try {
             
             String sql = "SELECT * FROM universidadulp_inscripcion WHERE idAlumno = ?";
-            PreparedStatement ps = conex.prepareStatement(sql);
+            PreparedStatement ps = Conex.prepareStatement(sql);
             ps.setInt(1,idAlumno);
             ResultSet rs = ps.executeQuery();
             
@@ -203,7 +175,7 @@ public class InscripcionData {
                         +"materia WHERE Inscripcion.idMateria = Materia.idMateria"
                         +"AND Inscripcion.idAlumno = ?;";
             
-            PreparedStatement ps = conex.prepareStatement(sql);
+            PreparedStatement ps = Conex.prepareStatement(sql);
             ps.setInt(1,idAlumno);
             ResultSet rs = ps.executeQuery();
             
@@ -234,7 +206,7 @@ public class InscripcionData {
             String sql = "SELECT * FROM universidadulp_materia WHERE estado = 1 AND idMateria not in"
                         +"(SELECT idMateria FROM universidadulp_inscripcion WHERE idAlumno = ?);";
             
-            PreparedStatement ps = conex.prepareStatement(sql);
+            PreparedStatement ps = Conex.prepareStatement(sql);
             ps.setInt(1,idAlumno);
             ResultSet rs = ps.executeQuery();
             
@@ -264,7 +236,7 @@ public class InscripcionData {
             String sql = "SELECT a.idAlumno,dni,nombre,apellido,fechaNacimiento,estado"
                         +" FROM universidadulp_inscripcion i,universidadulp_alumno a WHERE i.idAlumno = a.idAlumno AND idMateria = ?;";
             
-            PreparedStatement ps = conex.prepareStatement(sql);
+            PreparedStatement ps = Conex.prepareStatement(sql);
             ps.setInt(1,idMateria);
             ResultSet rs = ps.executeQuery();
             
