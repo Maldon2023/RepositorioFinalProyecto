@@ -1,22 +1,21 @@
 package Vistas;
 
 import AccesoADatos.AlumnoData;
-import AccesoADatos.InscripcionData;
 import Entidades.Alumno;
-import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.time.ZoneId;
 import javax.swing.JOptionPane;
 
 
 public class AlumnoView extends javax.swing.JInternalFrame {
-
+    AlumnoData aD= new AlumnoData();
+    Alumno a= null;
     
     public AlumnoView() {
         initComponents();
         datos();
         celdaNOEdit();
-        Alumno add=new Alumno();  
+     
     
        
         
@@ -57,7 +56,7 @@ public class AlumnoView extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Estado");
 
-        jLabel6.setText("Fecha de Nacimineto");
+        jLabel6.setText("Fecha de Nacimiento");
 
         jb_buscar.setBackground(new java.awt.Color(153, 153, 255));
         jb_buscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -93,6 +92,11 @@ public class AlumnoView extends javax.swing.JInternalFrame {
         jb_exit.setBackground(new java.awt.Color(153, 153, 255));
         jb_exit.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jb_exit.setText("Salir");
+        jb_exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_exitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -101,44 +105,41 @@ public class AlumnoView extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(183, 183, 183)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGap(39, 39, 39)
-                            .addComponent(jb_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jb_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jb_guardar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                            .addComponent(jb_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGap(37, 37, 37)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel4)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel3))
-                                        .addComponent(jLabel5))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jtf_nombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jrb_estado)
-                                            .addGap(0, 0, Short.MAX_VALUE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jtf_dni)
-                                            .addGap(77, 77, 77)
-                                            .addComponent(jb_buscar))
-                                        .addComponent(jtf_apellido)))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(4, 4, 4)
-                                    .addComponent(jLabel6)
-                                    .addGap(45, 45, 45)
-                                    .addComponent(jdc_fechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))))))
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jb_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(jb_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jb_guardar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jb_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel3))
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jtf_nombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtf_apellido)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jrb_estado)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jtf_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(59, 59, 59)
+                                        .addComponent(jb_buscar))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(49, 49, 49)
+                                .addComponent(jdc_fechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addComponent(jLabel1)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -148,17 +149,19 @@ public class AlumnoView extends javax.swing.JInternalFrame {
                 .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
                                     .addComponent(jtf_dni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jb_buscar))
-                                .addGap(39, 39, 39))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jtf_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3)))
-                        .addGap(25, 25, 25)
+                                    .addComponent(jb_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(64, 64, 64))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jtf_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
+                                .addGap(25, 25, 25)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(jtf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -198,77 +201,96 @@ public class AlumnoView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jb_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_buscarActionPerformed
-//              
-//        try{           
-//            int dni = Integer.parseInt(jtf_dni.getText());  
-//            
-//            for (AlumnoData aD : InscripcioData){
-//            if( aD.buscarAlumnoPorDni(dni)==null){
-//                jtf_dni.setText("");
-//                JOptionPane.showMessageDialog(this, " DNI no encontrado en la Base de Datos");
-//                    
-//            }else
-//                 datosView();
-//                 jtf_apellido.getText();
-//                 jtf_nombre.getText();
-//                 jrb_estado.isSelected();
-//                 jdc_fechaNacimiento.getDate();
-//            }
-//            
-//       }catch (NumberFormatException nf){
-//            JOptionPane.showMessageDialog(this,"Reingrese su DNI");
-//       }
+              
+        try{           
+            int dni = Integer.parseInt(jtf_dni.getText());  
+              
+              a=aD.buscarAlumnoPorDni(dni);
+           
+            if( a!=null){
+                 datosView();
+                 jtf_apellido.setText(a.getApellido());                         
+                 jtf_nombre.setText(a.getNombre());
+                 jrb_estado.setSelected(a.isEstado());
+                 
+                 LocalDate ld=a.getFechaNacimiento();
+                 java.util.Date d= java.util.Date.from(ld.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                 jdc_fechaNacimiento.setDate(d);            
+                
+                    
+            }else
+               JOptionPane.showMessageDialog(this, " DNI no encontrado en la Base de Datos");
+            
+            
+         }catch (NumberFormatException nf){
+            JOptionPane.showMessageDialog(this,"Reingrese su DNI");
+         }
+    
     }//GEN-LAST:event_jb_buscarActionPerformed
 
     private void jb_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_nuevoActionPerformed
-//       datosView();
-//       celdaEdit();
-//       
-//        try {           
-//        
-//            int dni = Integer.parseInt(jtf_dni.getText());
-//
-//            for (AlumnoData aD : InscripcionData) {
-//
-//                if (aD.buscarAlumnoPorDni(dni)!=null) {
-//                    JOptionPane.showMessageDialog(this, "El alumno ya existe.");                    
-//
-//                } else if(aD.buscarAlumnoPorDni(dni) == null){
-//                    jtf_apellido.getText();
-//                    jtf_nombre.getText();
-//                    jrb_estado.getSelectedIcon();
-//                    jdc_fechaNacimiento.getDate().toString();
-//                }
-//                }
-//
-//         } catch (NumberFormatException nf) {
-//            JOptionPane.showMessageDialog(this, "Reingrese su DNI" );
-//         }
+       datosView();
+       celdaEdit();
+       
+        try {           
+        
+            int dni = Integer.parseInt(jtf_dni.getText());
+            String apellido=jtf_apellido.getText();
+            String nombre=jtf_nombre.getText();
+            
+                if (apellido.isEmpty() || nombre.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "No pueden exixtir campos vacios."); 
+                    return;
+                }  
+                
+            java.util.Date fn=jdc_fechaNacimiento.getDate();
+            LocalDate ld= fn.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Boolean estado=jrb_estado.isSelected();
+                
+            if (a==null){
+                
+                a=new Alumno(dni, apellido, nombre, ld, estado);
+                aD.guardarAlumno(a);
+                
+            }else{
+                
+                a.setDni(dni);
+                a.setApellido(apellido);
+                a.setNombre(nombre);
+                a.setFechaNacimiento(ld);
+                aD.modificarAlumno(a);
+                
+            }             
+
+         } catch (NumberFormatException nf) {
+            JOptionPane.showMessageDialog(this, "Reingrese su DNI" );
+         }
+        
     }//GEN-LAST:event_jb_nuevoActionPerformed
 
     private void jb_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_eliminarActionPerformed
-//        
-//       datosView();
-//         try{      
-//        int dni=Integer.parseInt(jtf_dni.getText());
-//       
-//        for (AlumnoData aD: InscripcionData){
-//            
-//            if (aD.buscarAlumnoPorDni(dni)!= null){
-//                
-//                aD.eliminarAlumno(dni);
-//                
-//                JOptionPane.showMessageDialog(null, " El alumno: " + jtf_apellido.getText() + jtf_nombre.getText() + " ha sido eliminado. ");
-//            }
-//            else
-//                JOptionPane.showMessageDialog(null, "No se pudo eliminar el registro.");
-//        }
-//        
-//         }catch (NumberFormatException e ){
-//             JOptionPane.showMessageDialog(null, " El registro que desea eliminar no existe. O exixte un error en el DNI.");
-//         }
-//        
+       datosView();
+       celdaEdit();
+       
+        try {           
+                        
+            if (a!=null){
+                
+               aD.eliminarAlumno(a.getIdAlumno());
+               a=null;
+               datos();               
+                
+            }else
+                JOptionPane.showMessageDialog(this, " No se ha seleccionado alumno");              
+
+         } catch (NumberFormatException nf) {
+            JOptionPane.showMessageDialog(this, "Reingrese su DNI" );
+         }
     }//GEN-LAST:event_jb_eliminarActionPerformed
+
+    private void jb_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_exitActionPerformed
+        dispose();
+    }//GEN-LAST:event_jb_exitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

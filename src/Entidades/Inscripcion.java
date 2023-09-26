@@ -1,6 +1,5 @@
 package Entidades;
 
-
 public class Inscripcion {
    private int idInscripcion;
    private int nota;
@@ -57,12 +56,7 @@ public class Inscripcion {
 
     @Override
     public String toString() {
-        String Inscripcion = ( "numinscripcion "+ idInscripcion+ ("alumno"+ alumno.getApellido() + alumno.getNombre())+ materia.getNombre()+materia.getAnio());
-        return Inscripcion;//To change body of generated methods, choose Tools | Templates.
-    }
-   
-   
-   
-   
-   
+        String Inscripcion = ( "N° de Inscripcion: "+ idInscripcion + "\n" + ("Alumno: "+ alumno.getApellido() + ", " +alumno.getNombre()) + ": "+ materia.getNombre()+ "-" +materia.getAnio() + "año.");
+        return Inscripcion;
+    }   
 }

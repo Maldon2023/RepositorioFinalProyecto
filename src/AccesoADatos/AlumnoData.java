@@ -13,7 +13,8 @@ public class AlumnoData {
     private Connection conex;  
 
     public AlumnoData() {
-       conex=Conexion.Revisarconexion();
+       
+        conex=Conexion.Revisarconexion();
     }   
     
     
@@ -22,7 +23,7 @@ public class AlumnoData {
         ArrayList<Alumno> listaA = new ArrayList<>();
         
         try {
-            String sql = "SELECT (dni,apellido,nombre,fechaNacimiento) FROM alumno WHERE estado = 1 ";
+            String sql = "SELECT (dni,apellido,nombre,fechaNacimiento) FROM universidadulp_alumno WHERE estado = 1 ";
             
             PreparedStatement ps = conex.prepareStatement(sql);
             
@@ -51,7 +52,7 @@ public class AlumnoData {
 
     public void guardarAlumno(Alumno a){
     
-         String sql= (" INSERT INTO alumno (dni, apellido, nombre, fechaNacimiento,estado"
+         String sql= (" INSERT INTO universidadulp_alumno (dni, apellido, nombre, fechaNacimiento,estado"
                       + "VALUES (?,?,?,?,?)");  
          
          try{  
@@ -84,7 +85,7 @@ public class AlumnoData {
                                                       
     public void modificarAlumno(Alumno a){
     
-        String sql= ("UPDATE alumno SET dni=?, apellido=?, nombre=?, fechaNacimiento=?, estado=? WHERE idAlumno=?");
+        String sql= ("UPDATE universidadulp_alumno SET dni=?, apellido=?, nombre=?, fechaNacimiento=?, estado=? WHERE idAlumno=?");
         
         try {
             PreparedStatement ps = conex.prepareStatement(sql);
@@ -111,14 +112,14 @@ public class AlumnoData {
     
     
    
-    public void eliminarAlumno(int dni){
+    public void eliminarAlumno(int id){
         
-        String sql= "UPDATE alumno SET estado=0 WHERE dni=?"; 
+        String sql= "UPDATE universidadulp_alumno SET estado=0 WHERE idAlumno=?"; 
         
         try {
             PreparedStatement ps = conex.prepareStatement(sql);
                        
-            ps.setInt(1, dni);
+            ps.setInt(1, id);
             
             int filaEliminada=ps.executeUpdate();
             
@@ -139,7 +140,7 @@ public class AlumnoData {
     public Alumno buscarAlumnoPorId(int id){
         Alumno a=null;
         
-        String sql= ("SELECT (dni, apellido, nombre, fechaNacimiento,estado) FROM alumno WHERE idAlumno=? ");
+        String sql= ("SELECT (dni, apellido, nombre, fechaNacimiento,estado) FROM universidadulp_alumno WHERE idAlumno=? ");
     
         try{
              PreparedStatement ps=conex.prepareStatement(sql);
@@ -174,7 +175,7 @@ public class AlumnoData {
     public Alumno buscarAlumnoPorDni(int dni){
          Alumno a=null;
         
-        String sql= ("SELECT (apellido, nombre, fechaNacimiento,estado) FROM alumno WHERE dni=? ");
+        String sql= ("SELECT (apellido, nombre, fechaNacimiento,estado) FROM universidadulp_alumno WHERE dni=? ");
     
         try{
              PreparedStatement ps=conex.prepareStatement(sql);
