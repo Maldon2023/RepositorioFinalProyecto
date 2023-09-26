@@ -1,5 +1,13 @@
 package Entidades;
 
+
+import java.awt.List;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
+
+
 public class Inscripcion {
    private int idInscripcion;
    private int nota;
@@ -22,6 +30,10 @@ public class Inscripcion {
         this.materia = materia;
     }
 
+    public Inscripcion(int nota) {
+        this.nota = nota;
+    }
+    
     public int getIdInscripcion() {
         return idInscripcion;
     }
@@ -59,4 +71,5 @@ public class Inscripcion {
         String Inscripcion = ( "N° de Inscripcion: "+ idInscripcion + "\n" + ("Alumno: "+ alumno.getApellido() + ", " +alumno.getNombre()) + ": "+ materia.getNombre()+ "-" +materia.getAnio() + "año.");
         return Inscripcion;
     }   
+
 }
