@@ -68,7 +68,7 @@ public class Inscripcion {
 
     @Override
     public String toString() {
-        String Inscripcion = ( "N° de Inscripcion: "+ idInscripcion + "\n" + ("Alumno: "+ alumno.getApellido() + ", " +alumno.getNombre()) + ": "+ materia.getNombre()+ "-" +materia.getAnio() + "año.");
+        String Inscripcion = ( "N° de Inscripcion: "+ idInscripcion + "\n" + ("Alumno: "+ alumno.getApellido() + ", " +alumno.getNombre()) + ": "+ materia.getNombre()+ "-" +materia.getAnio() + "año");
         return Inscripcion;
     }   
 

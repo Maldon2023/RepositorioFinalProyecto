@@ -1,11 +1,8 @@
 package AccesoADatos;
 
 
-import Entidades.Materia;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import Entidades.*;
+import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import org.mariadb.jdbc.Statement;
@@ -17,14 +14,14 @@ public class MateriaData {
     public MateriaData() {
         conex=Conexion.Revisarconexion();
     }
-    public void guardarMateria(Materia materia) throws SQLException {
-         String sql= (" INSERT INTO materia (nombre, anio,estado)"
+    public void guardarMateria(Materia materia){
+         String sql= (" INSERT INTO universidadulp_materia(nombre,año,estado)"
                       + "VALUES (?,?,?)");
          
          try{  
              PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-              ps.setInt(1, materia.getAnio());
-              ps.setString(2, materia.getNombre());
+              ps.setString(1, materia.getNombre());
+              ps.setInt(2, materia.getAnio());
               ps.setBoolean(3, materia.isEstado());
               ps.executeUpdate();
               ResultSet rs= ps.getGeneratedKeys();
@@ -42,13 +39,10 @@ public class MateriaData {
                 }     
              
     }
-   public Materia BuscarMateria(int Id) {
-       throw new UnsupportedOperationException("Not supported yet.");
-    }
-
+   
     public void modificarMateria(Materia materia){ 
       
-     String sql= ("UPDATE materia SET anio=?,nombre=?, estado=? WHERE idMateria=?");
+     String sql= ("UPDATE universidadulp_materia SET año =?,nombre=?, estado=? WHERE idMateria=?");
         
         try {
             PreparedStatement ps = conex.prepareStatement(sql);
@@ -73,7 +67,7 @@ public class MateriaData {
 public void eliminarMateria(int id) {
 
     try {
-        String sql = "UPDATE materia SET estado = 0 WHERE idMateria = ? ";
+        String sql = "UPDATE universidadulp_materia SET estado = 0 WHERE idMateria = ? ";
         PreparedStatement ps = conex.prepareStatement(sql);
         ps.setInt(1, id);
 
@@ -92,7 +86,7 @@ public void eliminarMateria(int id) {
 
        Materia a = null;
         
-        String sql= ("SELECT ( nombre, anio , estado) FROM materia WHERE idMateria=? ");
+        String sql= ("SELECT ( nombre, año , estado) FROM universidadulp_materia WHERE idMateria=? ");
     
         try{
              PreparedStatement ps=conex.prepareStatement(sql);
@@ -103,8 +97,8 @@ public void eliminarMateria(int id) {
              if(rs.next()){
                  a= new Materia();
                  a.setNombre(rs.getString("nombre"));
-                 a.setAnio(rs.getInt("anio"));
-                 a.setEstado(true);
+                 a.setAnio(rs.getInt("año"));
+                 a.setEstado(rs.getBoolean("estado"));
              
              }else
                  
@@ -114,7 +108,7 @@ public void eliminarMateria(int id) {
              rs.close();
              
         }catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, " Error  en la Base de Datos.");
+            JOptionPane.showMessageDialog(null, " Error de búsqueda en universidadulp_materia ");
         }
         return a;
 
@@ -126,7 +120,7 @@ public void eliminarMateria(int id) {
         ArrayList<Materia> listaMat= new ArrayList<>();
         
         try {
-            String sql = "SELECT (nombre,anio,estado) FROM materia WHERE estado = 1 ";
+            String sql = "SELECT (nombre,año,estado) FROM universidadulp_materia WHERE estado = 1 ";
             
             PreparedStatement ps = conex.prepareStatement(sql);
             
@@ -136,16 +130,16 @@ public void eliminarMateria(int id) {
                 
                 Materia materia = new Materia();
                 materia.setIdMateria(rs.getInt("idMateria"));
-                materia.setNombre(rs.getNString("nombre"));
+                materia.setNombre(rs.getString("nombre"));
                 materia.setEstado(rs.getBoolean("estado"));
-                materia.setAnio(rs.getInt("anio"));                
+                materia.setAnio(rs.getInt("año"));                
                    
             }
             
             ps.close();
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla materia" + " " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla universidadulp_materia" + " " + ex.getMessage());
         }
         return listaMat;
 

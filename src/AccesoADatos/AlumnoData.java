@@ -52,7 +52,7 @@ public class AlumnoData {
 
     public void guardarAlumno(Alumno a){
     
-         String sql= (" INSERT INTO universidadulp_alumno (dni, apellido, nombre, fechaNacimiento,estado"
+         String sql= ("INSERT INTO universidadulp_alumno(dni, apellido, nombre, fechaNacimiento,estado)"
                       + "VALUES (?,?,?,?,?)");  
          
          try{  
@@ -62,7 +62,7 @@ public class AlumnoData {
              ps.setString(2, a.getApellido());
              ps.setString(3, a.getNombre());
              ps.setDate(4,Date.valueOf(a.getFechaNacimiento()));
-             ps.setBoolean(5, a.isEstado());
+             ps.setBoolean(5,a.isEstado());
              
              ps.executeUpdate();
              ResultSet rs= ps.getGeneratedKeys(); 
@@ -73,7 +73,7 @@ public class AlumnoData {
              }
             
              ps.close();
-             rs.close();
+             
          }catch (SQLException e){
              
              JOptionPane.showMessageDialog(null, " Error en la inserción en la Base de Datos. ");
@@ -140,7 +140,7 @@ public class AlumnoData {
     public Alumno buscarAlumnoPorId(int id){
         Alumno a=null;
         
-        String sql= ("SELECT (dni, apellido, nombre, fechaNacimiento,estado) FROM universidadulp_alumno WHERE idAlumno=? ");
+        String sql= ("SELECT (dni, apellido, nombre, fechaNacimiento,estado) FROM universidadulp_alumno WHERE idAlumno=? AND estado = 1");
     
         try{
              PreparedStatement ps=conex.prepareStatement(sql);
@@ -161,10 +161,9 @@ public class AlumnoData {
                  JOptionPane.showMessageDialog(null,"El alumno no exixte");                                 
                 
              ps.close();
-             rs.close();
-             
-        }catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, " Error en la búsqueda en la Base de Datos.");
+                          
+        }catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error de busqueda en universidadulp_alumno");
         }
         return a;
         

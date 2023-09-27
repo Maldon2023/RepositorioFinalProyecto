@@ -10,7 +10,7 @@ public class Conexion {
     private static final String URL = "jdbc:mariadb://localhost/" ;
     private static final String DB = "universidadulp_equipo27";
     private static final String USUARIO = "root";
-    private static String PASSWORD= "";
+    private static final String PASSWORD= "";
     private static Connection conex;
 
     public Conexion() {
@@ -20,8 +20,9 @@ public class Conexion {
            try{
                Class.forName("org.mariadb.jdbc.Driver");
 
-               conex= DriverManager.getConnection (URL + DB+"?useLegacyDatetimeCode = false&severTimezone = UTC " + "&user= "  + USUARIO + " &password = " + PASSWORD );
-               JOptionPane.showMessageDialog(null,"Conexion a base de datos exitosa");
+               conex= DriverManager.getConnection("jdbc:mariadb://localhost/universidadulp_equipo27","root","");
+               //conex= DriverManager.getConnection (URL + DB + "?useLegacyDatetimeCode = false&severTimezone = UTC " + "&user= "  + USUARIO + " &password = " + PASSWORD );
+               JOptionPane.showMessageDialog(null,"Conectado");
 
            } catch ( SQLException    uni  ){
                JOptionPane.showMessageDialog( null , " Error al conectarse con la base de datos"+ uni.getMessage());
